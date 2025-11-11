@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.ausiasmarch.persutil.service.AleatorioService;
 import net.ausiasmarch.persutil.service.BlogService;
+import net.ausiasmarch.persutil.service.FraseService;
 
 @RestController
 @RequestMapping("/blog")
@@ -20,6 +21,16 @@ public class BlogApi {
 
     @Autowired
     BlogService oBlogService;
+
+    @Autowired
+    FraseService oFraseService;
+    String [] palabras = {
+         "galaxia", "teclado", "búho", "laberinto", "escarcha",
+    "murmullo", "destello", "brújula", "espejismo", "cristal",
+    "misterio", "relámpago", "susurro", "océano", "fragmento",
+    "eco", "vértigo", "tormenta", "horizonte", "cascada",
+    "raíces", "cometa", "tempestad", "alborada", "melodía"
+    };
 
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar() {
@@ -55,6 +66,11 @@ public class BlogApi {
     @GetMapping("/rellenauno")
     public ResponseEntity<Long> rellenaBlog() {
         return ResponseEntity.ok(oBlogService.rellenaBlog());
+    }
+
+    @GetMapping("/frase")
+    public ResponseEntity<String> palabras(){
+        return ResponseEntity.ok(oFraseService.FraseAleatoria(palabras));
     }
 
 }
