@@ -1,8 +1,11 @@
 package net.ausiasmarch.persutil.service;
 
 import java.util.Random;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FraseService {
+    
     
     public String FraseAleatoria(String[] palabras) {
         Random random = new Random();
